@@ -5,18 +5,37 @@
   <meta name="keywords" content="注音詞庫, 拼音詞庫, 線上轉換">
 	<meta name="description" content="線上轉換注音詞庫為拼音詞庫">
   <style type="text/css">
+    body, div {
+      background-color: #F0F8FF;
+    }
     div {
-      text-align:center;
+      text-align: center;
+    }
+    .div-inline {
+      display: inline;
+      margin-left: 20px;
     }
     textarea {
       width: 100%;
       height: 40%;
     }
+    #output_textarea {
+      background-color: #F5F5F5;
+    }
   </style> 
 </head>
 <body>
   <h1>注音詞庫轉拼音詞庫</h1>
-  <h2>目前支援新酷音注音詞庫轉 Rime 拼音詞庫</h2>
+  <div>
+    <div class="div-inline">功能選擇：
+      <select id="input_dict">
+        <option value="yahoo">「Yahoo! 奇摩輸入法」注音詞庫轉「Rime」拼音詞庫</option>
+        <option value="chewing">「新酷音」注音詞庫轉「Rime」拼音詞庫</option>
+      </select>
+    </div>
+    <div class="div-inline">
+    </div>
+  </div>
   <div>
     <textarea id="input_textarea"></textarea>
   </div>
