@@ -28,6 +28,8 @@ var 注音鍵碼轉漢拚 = function(注音音節鍵值編碼){
   return 注音音節鍵值編碼.split("").map(function(碼元){
     return 中介鍵碼表[注音鍵碼表.indexOf(碼元)];
   }).join("")
+  // 漢拼中「lvan」(ㄌㄩㄢ)為無效拼音（沒有這個音）。以「ㄌㄨㄢ」替代「ㄌㄩㄢ」。
+    .replace(/^lvM(\d)$/, "luM$1")
   // 逆規則25，
     .replace(/([iv])E/g, "$1e")
   // 逆規則24，
@@ -58,16 +60,16 @@ var 注音鍵碼轉漢拚 = function(注音音節鍵值編碼){
     .replace(/^C(\d)$/, "chi$1").replace(/^C/, "ch")
   // 逆規則11，例子：志（"Z1" ,"zhi1"），炸（"Za1", "zha1"）
     .replace(/^Z(\d)$/, "zhi$1").replace(/^Z/, "zh")
-  // 逆規則09，
-    .replace(/^([jqx])v/, "$1u")
   // 逆規則08，
     .replace(/^v/, "iu")
   // 逆規則07，例子：吳（"u2" ,"wu2"），挖（"ua1", "wa1"），「翁」
     .replace(/^u(\d)$/, "wu$1").replace(/^u/, "w")
-  // 逆規則06，例子：易（"i4" ,"yi4"），亞（"ia3", "ya3"）
-    .replace(/^i(\d)$/, "yi$1").replace(/^i/, "y")
+  // 逆規則06，例子：因應，易（"i4" ,"yi4"），亞（"ia3", "ya3"）
+    .replace(/^ien/, "yin").replace(/^i(\d)$/, "yi$1").replace(/^i/, "y")
   // 逆規則10
     .replace(/([iuv])en/g, "$1n")
+  // 逆規則09，
+    .replace(/^([jqx])vng/, "$1iung").replace(/^([jqx])v/, "$1u")
   // 逆規則05，
     .replace(/ung/g, "ong")
   // 逆規則04，
